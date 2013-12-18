@@ -68,11 +68,14 @@ module Mumbletune
 					paused = Mumbletune.player.pause
 					response = (paused) ? "Paused." : "Unpaused."
 					message.respond response
+					message.respond_all("#{message.sender.name} has paused the song.")
 
 				when /^unpause$/i
 					if Mumbletune.player.paused?
 						Mumbletune.player.play
 						message.respond "Unpaused."
+						message.respond_all("#{message.sender.name} has unpaused the song.")
+
 					else
 						message.respond "Not paused."
 					end
